@@ -64,6 +64,6 @@ class PlantRecordsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def plant_record_params
-    params.require(:plant_record).permit(:latitude, :longitude, photos: [])
+    params.require(:plant_record).permit(:latitude, :longitude, :notes, photos: [])
   end
 end

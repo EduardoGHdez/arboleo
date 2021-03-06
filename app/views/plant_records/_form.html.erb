@@ -28,14 +28,21 @@
 
   <hr>
 
-  <div class="field">
-    <%= form.label :latitude, class: "form-label" %>
+  <div class="form-floating mb-3">
     <%= form.text_field :latitude, class: "form-control"%>
+    <%= form.label :latitude %>
   </div>
 
-  <div class="field">
-    <%= form.label :longitude, class: "form-label" %>
+  <div class="form-floating mb-3">
     <%= form.text_field :longitude, class: "form-control" %>
+    <%= form.label :longitude %>
+  </div>
+
+  <hr>
+
+  <div class="form-floating mb-3">
+    <%= form.text_area :notes, class: "form-control", style: "min-height: 200px" %>
+    <%= form.label :notes %>
   </div>
 
   <br/>
