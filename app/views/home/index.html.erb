@@ -6,7 +6,15 @@
           center:new google.maps.LatLng(Guanajuato.latitude, Guanajuato.longitude),
           zoom:8,
         };
+
       const map = new google.maps.Map(document.getElementById("map"),mapProp);
+
+      <%- @plant_records.each do |plant_record| %>
+        new google.maps.Marker({
+          position: { lat: <%= plant_record.latitude%>, lng: <%= plant_record.longitude %> },
+          map: map,
+        });
+      <% end%>
     }
 </script>
 
