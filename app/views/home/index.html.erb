@@ -10,14 +10,20 @@
       const map = new google.maps.Map(document.getElementById("map"),mapProp);
 
       <%- @plant_records.each_with_index do |plant_record, index| %>
-        new google.maps.Marker({
+        marker = new google.maps.Marker({
           position: { lat: <%= plant_record.latitude%>, lng: <%= plant_record.longitude %> },
           map: map,
           icon: {
             url: "<%= image_url("icons/#{"%03d" % (index.next % 50)}-tree.png")%>",
-            scaledSize: new google.maps.Size(30, 30)
+            scaledSize: new google.maps.Size(40, 40)
           }
         });
+
+        infowindow = new google.maps.InfoWindow({
+          content: `<div id='content'><%= link_to 'link', plant_record_path(plant_record)%></div>`,
+        });
+
+        marker.addListener("click", () => { infowindow.open(map, marker); });
       <% end%>
     }
 </script>
