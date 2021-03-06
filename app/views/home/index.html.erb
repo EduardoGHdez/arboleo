@@ -9,6 +9,7 @@
 
       const map = new google.maps.Map(document.getElementById("map"),mapProp);
 
+      let marker;
       <%- @plant_records.each_with_index do |plant_record, index| %>
         marker = new google.maps.Marker({
           position: { lat: <%= plant_record.latitude%>, lng: <%= plant_record.longitude %> },
@@ -19,11 +20,7 @@
           }
         });
 
-        infowindow = new google.maps.InfoWindow({
-          content: `<div id='content'><%= link_to 'link', plant_record_path(plant_record)%></div>`,
-        });
-
-        marker.addListener("click", () => { infowindow.open(map, marker); });
+        marker.addListener("click", () => { location.href = "<%= plant_record_path plant_record  %>" });
       <% end%>
     }
 </script>
