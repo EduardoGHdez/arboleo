@@ -1,0 +1,46 @@
+<%= form_with(model: plant_record) do |form| %>
+  <% if plant_record.errors.any? %>
+    <div  class="alert alert-warning">
+      <h2 class="alert-heading"><%= pluralize(plant_record.errors.count, "error") %> prohibited this plant_record from being saved:</h2>
+
+      <ul>
+        <% plant_record.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="d-flex flex-column align-items-center card bg-success bg-gradient p-3">
+    <i class="fas fa-camera fa-3x text-white"></i>
+    <hr>
+    <%= form.file_field :photos, multiple: true, class: "form-control" %>
+  </div>
+
+  <br/>
+
+  <div class="row">
+    <div class="btn btn-secondary" data-component="magic-location-fill">
+      Auto-completar información geografica &nbsp;
+      <i class="fas fa-hat-wizard"></i>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="field">
+    <%= form.label :latitude, class: "form-label" %>
+    <%= form.text_field :latitude, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :longitude, class: "form-label" %>
+    <%= form.text_field :longitude, class: "form-control" %>
+  </div>
+
+  <br/>
+
+  <div class="d-grid gap-2">
+    <%= form.submit class: "btn btn-lg btn-success" %>
+  </div>
+<% end %>

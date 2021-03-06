@@ -1,0 +1,43 @@
+<p class="<%= notice && "alert alert-success"%>"><%= notice %></p>
+
+<h1>Records</h1>
+
+<hr>
+
+<div class="text-center">
+  <%= link_to 'New Plant Record', new_plant_record_path, class: "btn btn-light" %>
+</div>
+
+<hr>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">Latitude</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @plant_records.each do |plant_record| %>
+      <tr>
+        <th scope="row"> <i class="fas fa-<%= cycle("seedling", "leaf", "tree")%>"></i> </th>
+        <td><%= plant_record.longitude.round(2) %></td>
+        <td><%= plant_record.latitude.round(2) %></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdown<%= plant_record.id%>" data-bs-toggle="dropdown" aria-expanded="false">
+              ...
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdown<%= plant_record.id %>">
+              <li><%= link_to 'Show', plant_record, class: "dropdown-item"%></li>
+              <li><%= link_to 'Edit', edit_plant_record_path(plant_record), class: "dropdown-item" %></li>
+              <li><%= link_to 'Destroy', plant_record, class: "dropdown-item", method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

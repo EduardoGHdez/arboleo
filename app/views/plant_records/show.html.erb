@@ -1,0 +1,21 @@
+<p class="<%= notice && "alert alert-success"%>"><%= notice %></p>
+
+<%= render 'photos', photos: @plant_record.photos%>
+<hr>
+<dl class="row">
+  <dt class="col-sm-3"><strong>Latitude:</strong></dt>
+  <dd class="col-sm-9"><%= @plant_record.latitude%></dd>
+  <hr>
+  <dt class="col-sm-3"><strong>Longitude:</strong></dt>
+  <dd class="col-sm-9"><%= @plant_record.longitude%></dd>
+  <hr>
+  <dt class="col-sm-3"><strong>Created at:</strong></dt>
+  <dd class="col-sm-9"><%= @plant_record.created_at%></dd>
+</dl>
+
+<hr>
+
+<div class="text-center">
+  <%= link_to 'Edit', edit_plant_record_path(@plant_record), class: "btn btn-link"%>
+  <%= link_to 'Back', plant_records_path, class: "btn btn-light" %>
+</div>
