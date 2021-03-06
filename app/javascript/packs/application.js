@@ -13,6 +13,7 @@ import "../stylesheets/application";
 import "@fortawesome/fontawesome-free/js/all";
 
 import "./magic-location-filler";
+import "./google-maps";
 
 Rails.start()
 Turbolinks.start()

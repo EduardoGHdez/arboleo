@@ -9,13 +9,17 @@
 
       const map = new google.maps.Map(document.getElementById("map"),mapProp);
 
-      <%- @plant_records.each do |plant_record| %>
+      <%- @plant_records.each_with_index do |plant_record, index| %>
         new google.maps.Marker({
           position: { lat: <%= plant_record.latitude%>, lng: <%= plant_record.longitude %> },
           map: map,
+          icon: {
+            url: "<%= image_url("icons/#{"%03d" % (index.next % 50)}-tree.png")%>",
+            scaledSize: new google.maps.Size(30, 30)
+          }
         });
       <% end%>
     }
 </script>
 
-<div id="map" style="width:100%;height:800px;"></div>
+<div id="map" data-component="map" style="width:100%;height:800px;"></div>
